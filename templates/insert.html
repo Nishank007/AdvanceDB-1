@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<form action="/insert" method="post">
+	
+	<label>Name</label>
+	<input placeholder = "Zelda Gilroy" type="text" name="Name"><br>
+	<label>Student ID</label>
+	<input type="number" name="State"><br>
+	<h6>Class 1</h6>
+	<label>Section</label>
+	<input type="number" name="Salary"><br>
+	<label>Classnum</label>
+	<input type="number" name="Grade"><br>
+	<h6>Class 2</h6>
+	<label>Section</label>
+	<input type="number" name="Room"><br>
+	<label>Classnum</label>
+	<input type="number" name="Telnum"><br>
+	<h6>Class 3</h6>
+	<label>Section</label>
+	<input type="number" name="Picture"><br>
+	<label>Classnum</label>
+	<input type="number" name="Keywords"><br>
+	<!-- <label>Grade</label> -->
+	<!-- <input type="number" name="Grade"><br>
+	<label>Room</label>
+	<input type="number" name="Room"><br> -->
+	<!-- <label>Telnum</label>
+	<input type="number" name="Telnum"><br>
+	<label>Picture</label>
+	<input type="text" name="Picture"><br>
+	<label>Keywords</label>
+	<input type="text" name="Keywords"><br> -->
+
+	<input type="submit" name="add_people_submit" value="Enroll">
+
+</form>
+<h2>Course List</h2>
+</br>
+{% if result == False %}
+	No result
+{% else %}
+<table class="table table-striped table-bordered table-hover table-condensed" >
+	<tr>
+		<th>Course</th>
+		<th>Section</th>
+		<th>ClassNum</th>
+		<th>Days</th>
+		<th>StartTime</th>
+		<th>EndTime</th>
+		<th>Enrolled</th>
+		<th>Max</th>
+	</tr>
+{% for det in result %}
+<tr>
+	<td>{{ det[0] }}</td>
+	<td>{{ det[1] }}</td>
+	<td>{{ det[2] }}</td>
+	<td>{{ det[3] }}</td>
+	<td>{{ det[4] }}</td>
+	<td>{{ det[5] }}</td>
+	<td>{{ det[6] }}</td>
+	<td>{{ det[7] }}</td>
+</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+<a href="{{ url_for('index') }}">Go back to Home Page</a>
+{% endblock %}
